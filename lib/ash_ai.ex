@@ -44,9 +44,11 @@ defmodule AshAi do
           actor.
           """
         ]
-      ]
+      ],
+      enumerable: true
   end
 
+  @spec iex_chat(nil | keyword(), any()) :: :done
   @doc """
   Chat with the AI in IEx.
 
@@ -122,7 +124,7 @@ defmodule AshAi do
 
     functions = functions(opts)
 
-    apikey = System.fetch_env!("OPEN_AI_API_KEY")
+    apikey = System.fetch_env!("OPENAI_API_KEY")
     openai = OpenaiEx.new(apikey)
 
     system =

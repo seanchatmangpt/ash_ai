@@ -21,11 +21,12 @@ defmodule AshAi.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ash_json_api, "~> 1.0"},
       {:openai_ex, "~> 0.8"},
       {:ash, "~> 3.0"},
-      {:ash_json_api, github: "ash-project/ash_json_api"},
       {:open_api_spex, "~> 3.0"},
-      {:igniter, "~> 0.3"}
+      {:igniter, "~> 0.3"},
+      {:mock, "~> 0.3.0", only: :test}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]

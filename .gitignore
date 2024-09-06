@@ -24,3 +24,7 @@ ash_ai-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/.lh
+
+/.elixir_ls/

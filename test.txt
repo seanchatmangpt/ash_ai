@@ -1,0 +1,293 @@
+	Compiling 1 file (.ex)
+Running ExUnit with seed: 257887, max_cases: 32
+
+
+
+  1) test destroy/1 destroys a user successfully (Twitter.Support.UserTest)
+     test/support/user_test.exs:84
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:80: Twitter.Support.UserTest.__ex_unit_setup_3_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_3/1
+
+
+
+  2) test create/2 fails to create a user with invalid email (Twitter.Support.UserTest)
+     test/support/user_test.exs:26
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     code: assert {:error, _} = User.create(%{username: "john_doe", email: "invalid-email"})
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "invalid-email"})
+       test/support/user_test.exs:28: (test)
+
+
+
+  3) test update/3 fails to update a user with missing username (Twitter.Support.UserTest)
+     test/support/user_test.exs:67
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:55: Twitter.Support.UserTest.__ex_unit_setup_2_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_2/1
+
+
+
+  4) test create/2 fails to create a user with missing username (Twitter.Support.UserTest)
+     test/support/user_test.exs:21
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     code: assert {:error, _} = User.create(%{email: "john.doe@example.com"})
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{email: "john.doe@example.com"})
+       test/support/user_test.exs:23: (test)
+
+
+
+  5) test read_by_id/1 retrieves a user by ID (Twitter.Support.UserTest)
+     test/support/user_test.exs:38
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:34: Twitter.Support.UserTest.__ex_unit_setup_1_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_1/1
+
+
+
+  6) test destroy/1 fails to destroy a non-existent user (Twitter.Support.UserTest)
+     test/support/user_test.exs:90
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:80: Twitter.Support.UserTest.__ex_unit_setup_3_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_3/1
+
+
+
+  7) test update/3 updates a user with valid attributes (Twitter.Support.UserTest)
+     test/support/user_test.exs:59
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:55: Twitter.Support.UserTest.__ex_unit_setup_2_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_2/1
+
+
+
+  8) test read_by_id/1 returns an error when user is not found (Twitter.Support.UserTest)
+     test/support/user_test.exs:47
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:34: Twitter.Support.UserTest.__ex_unit_setup_1_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_1/1
+
+
+
+  9) test update/3 fails to update a user with invalid email (Twitter.Support.UserTest)
+     test/support/user_test.exs:72
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:55: Twitter.Support.UserTest.__ex_unit_setup_2_0/1
+       Twitter.Support.UserTest.__ex_unit_describe_2/1
+
+
+
+ 10) test create/2 creates a user with valid attributes (Twitter.Support.UserTest)
+     test/support/user_test.exs:12
+     ** (UndefinedFunctionError) function Twitter.Support.User.create/1 is undefined or private. Did you mean:
+
+           * create/2
+           * create/3
+           * create/4
+
+     code: {:ok, user} = User.create(%{username: "john_doe", email: "john.doe@example.com"})
+     stacktrace:
+       (ash_ai 0.1.0) Twitter.Support.User.create(%{username: "john_doe", email: "john.doe@example.com"})
+       test/support/user_test.exs:14: (test)
+
+
+17:05:18.329 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "be83b4d4-c2c4-4513-8409-fafeeed16b4f",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.318823Z],
+  updated_at: ~U[2024-09-06 00:05:18.320241Z],
+  user_id: "3b34a9fd-95af-4ca1-8781-8c9987e5ed41",
+  content: "Tweet to be deleted"
+}
+
+..
+17:05:18.340 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "6c39b694-0102-42e2-9ce5-3be6ceb21f54",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.340319Z],
+  updated_at: ~U[2024-09-06 00:05:18.340322Z],
+  user_id: "1f044531-c981-43d9-b997-e8198d7c01b1",
+  content: "Initial tweet"
+}
+
+..
+17:05:18.343 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "a6bc132a-986b-4dd3-9266-b88a0eefb51d",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.343105Z],
+  updated_at: ~U[2024-09-06 00:05:18.343107Z],
+  user_id: "62af7801-1ac9-49ff-bc8d-245c64e546db",
+  content: "First tweet"
+}
+
+
+17:05:18.343 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "0a187295-dc49-41ae-9a8e-9b7964dc6e17",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.343295Z],
+  updated_at: ~U[2024-09-06 00:05:18.343297Z],
+  user_id: "62af7801-1ac9-49ff-bc8d-245c64e546db",
+  content: "Second tweet"
+}
+
+.
+17:05:18.363 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "ea164dcb-d40f-4b71-a9ce-b23ab6a16114",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.363185Z],
+  updated_at: ~U[2024-09-06 00:05:18.363192Z],
+  user_id: "0fe6653c-b784-4424-9827-e860e13afc3a",
+  content: "Read this tweet"
+}
+
+.
+17:05:18.363 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "78cfa697-b1ff-461e-b19f-112aa5065674",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.363596Z],
+  updated_at: ~U[2024-09-06 00:05:18.363597Z],
+  user_id: "ecce430a-3ee1-43de-89e0-f376a1c8f7e4",
+  content: "First tweet"
+}
+
+
+17:05:18.363 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "b97bd4bf-c2e9-4815-a917-f9211b7ac2b2",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.363736Z],
+  updated_at: ~U[2024-09-06 00:05:18.363737Z],
+  user_id: "ecce430a-3ee1-43de-89e0-f376a1c8f7e4",
+  content: "Second tweet"
+}
+
+.
+17:05:18.364 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "af5268a4-8c56-48cd-b4d2-a89ba523c1a6",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.364017Z],
+  updated_at: ~U[2024-09-06 00:05:18.364018Z],
+  user_id: "a41f65f4-c9b5-4d50-800f-94193cbcf710",
+  content: "Initial tweet"
+}
+
+
+17:05:18.374 [debug] ETS: Updating Twitter.Support.Tweet matching filter `id == "af5268a4-8c56-48cd-b4d2-a89ba523c1a6"`:
+
+%{content: "Updated tweet"}
+
+.
+17:05:18.375 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "b7f71532-c43d-452c-aa24-26fbe31d04b1",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.375060Z],
+  updated_at: ~U[2024-09-06 00:05:18.375064Z],
+  user_id: "96c360da-6bc9-4952-b73a-d2fceb589ba3",
+  content: "Read this tweet"
+}
+
+.
+17:05:18.376 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "0424993b-d8a7-4a9b-a5ca-40d94aeb9802",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.376116Z],
+  updated_at: ~U[2024-09-06 00:05:18.376118Z],
+  user_id: "b208dea7-c632-4004-8635-b632b69f8a85",
+  content: "Tweet to be deleted"
+}
+
+.
+17:05:18.378 [debug] Creating Twitter.Support.Tweet:
+
+%{
+  id: "00936d6c-0d06-4591-a69f-4fb63033243d",
+  status: :draft,
+  inserted_at: ~U[2024-09-06 00:05:18.378238Z],
+  updated_at: ~U[2024-09-06 00:05:18.378242Z],
+  user_id: "017c27e9-ce46-4c6d-99d1-973e891b6e35",
+  content: "Hello, world!"
+}
+
+.
+Finished in 0.1 seconds (0.1s async, 0.00s sync)
+21 tests, 10 failures
