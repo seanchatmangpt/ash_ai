@@ -196,6 +196,8 @@ defmodule AshAi do
          _functions,
          messages
        ) do
+    IO.inspect("call_until_complete", label: "DEBUG")
+    IO.inspect(message, label: "DEBUG")
     arguments = Jason.decode!(arguments)
     {:ok, arguments["message"], messages ++ [message]}
   end
@@ -207,11 +209,15 @@ defmodule AshAi do
          _functions,
          messages
        ) do
+    IO.inspect("call_until_complete", label: "DEBUG")
+    IO.inspect(content, label: "DEBUG")
     {:ok, content, messages}
   end
 
   defp call_until_complete(%{"choices" => choices}, actor, openai, functions, messages) do
     choice = Enum.at(choices, 0)["message"]
+    IO.inspect("call_until_complete", label: "DEBUG")
+    IO.inspect(choice, label: "DEBUG")
 
     if Enum.empty?(choice["tool_calls"] || []) do
       raise "no tool calls"
