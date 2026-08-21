@@ -101,15 +101,19 @@ jobs:
           EOF
 
           cd capsule
+          export MIX_HOME="$PWD/.mix-home"
+          export HEX_HOME="$PWD/.hex-home"
           mix local.hex --force
           mix local.rebar --force
           mix deps.get
           MIX_ENV=test mix compile
 
           {
-            echo "ASH_CAPSULE_RECEIPT_V1"
+            echo "ASH_CAPSULE_RECEIPT_V2"
             date -u +"built_at=%Y-%m-%dT%H:%M:%SZ"
             echo "ash=3.32.0"
+            echo "mix_home=.mix-home"
+            echo "hex_home=.hex-home"
             elixir --version
             mix --version
             echo "--- mix test ---"
