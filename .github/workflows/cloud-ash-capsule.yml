@@ -1,0 +1,128 @@
+name: Cloud Ash Runtime Capsule
+
+on:
+  push:
+    branches:
+      - chore/cloud-ash-capsule
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manufacture-capsule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Install BEAM toolchain
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: "29.0"
+          elixir-version: "1.20.2"
+
+      - name: Build and verify Ash capsule
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p capsule/lib capsule/test
+
+          cat > capsule/mix.exs <<'EOF'
+          defmodule AshCapsule.MixProject do
+            use Mix.Project
+
+            def project do
+              [
+                app: :ash_capsule,
+                version: "0.1.0",
+                elixir: "~> 1.20",
+                start_permanent: Mix.env() == :prod,
+                deps: [{:ash, "== 3.32.0"}]
+              ]
+            end
+
+            def application do
+              [extra_applications: [:logger]]
+            end
+          end
+          EOF
+
+          cat > capsule/lib/ash_capsule.ex <<'EOF'
+          defmodule AshCapsule.Ticket do
+            use Ash.Resource,
+              domain: AshCapsule.Domain,
+              data_layer: Ash.DataLayer.Ets
+
+            attributes do
+              uuid_primary_key :id
+              attribute :name, :string, allow_nil?: false, public?: true
+            end
+
+            actions do
+              defaults [:read, create: [:name]]
+            end
+          end
+
+          defmodule AshCapsule.Domain do
+            use Ash.Domain
+
+            resources do
+              resource AshCapsule.Ticket
+            end
+          end
+          EOF
+
+          cat > capsule/test/test_helper.exs <<'EOF'
+          ExUnit.start()
+          EOF
+
+          cat > capsule/test/ash_capsule_test.exs <<'EOF'
+          defmodule AshCapsuleTest do
+            use ExUnit.Case, async: false
+
+            alias AshCapsule.Ticket
+
+            test "Ash Resource executes create and read through ETS" do
+              ticket =
+                Ticket
+                |> Ash.Changeset.for_create(:create, %{name: "ALIVE"})
+                |> Ash.create!()
+
+              assert ticket.name == "ALIVE"
+              assert ticket.id
+
+              [loaded] = Ash.read!(Ticket)
+              assert loaded.id == ticket.id
+              assert loaded.name == "ALIVE"
+            end
+          end
+          EOF
+
+          cd capsule
+          mix local.hex --force
+          mix local.rebar --force
+          mix deps.get
+          MIX_ENV=test mix compile
+
+          {
+            echo "ASH_CAPSULE_RECEIPT_V1"
+            date -u +"built_at=%Y-%m-%dT%H:%M:%SZ"
+            echo "ash=3.32.0"
+            elixir --version
+            mix --version
+            echo "--- mix test ---"
+            MIX_ENV=test mix test
+          } 2>&1 | tee receipt.txt
+
+          cd ..
+          tar -czf ash-capsule.tar.gz -C capsule .
+          sha256sum ash-capsule.tar.gz > ash-capsule.tar.gz.sha256
+
+      - name: Upload runtime capsule
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ash-3.32.0-runtime-capsule
+          path: |
+            ash-capsule.tar.gz
+            ash-capsule.tar.gz.sha256
+          retention-days: 7
+          if-no-files-found: error
